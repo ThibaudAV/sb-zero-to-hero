@@ -1,14 +1,23 @@
 import {html, LitElement} from 'lit';
-import { customElement } from 'lit/decorators';
+import {customElement} from 'lit/decorators';
 
 @customElement('my-liker')
 export class Liker extends LitElement {
-  private likes = 0;
+  static override get properties() {
+    return {
+      likes: {type: Number},
+      dislikes: {type: Number},
+    };
+  }
+
+  public likes = 0;
+
   private dislikes = 0;
 
   like() {
     this.likes++;
     this.requestUpdate();
+    this.dispatchEvent(new CustomEvent('my-liker:like'));
   }
 
   dislike() {
