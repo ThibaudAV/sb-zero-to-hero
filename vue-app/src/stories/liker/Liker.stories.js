@@ -10,6 +10,12 @@ export default {
     likes: { control: "number" },
     dislikes: { control: "number" },
   },
+  decorators: [
+    () => ({
+      template:
+        '<div style="border: 2px solid pink; padding:2rem"><story/></div>',
+    }),
+  ],
 };
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args

@@ -6,7 +6,8 @@ export default {
   title: 'CSF3 / Liker',
   component: LikerComponent,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    liked: { action: 'liked' },
+    disLiked: { action: 'disLiked' },
   },
   decorators: [
     componentWrapperDecorator(
@@ -27,4 +28,11 @@ export const Default: Story = {
     button.click();
     button.click();
   },
+};
+export const Template: Story = {
+  render: (args: any) => ({
+    template:
+      '<app-liker [likes]="likes" [dislikes]="dislikes" (liked)="liked($event)" (disLiked)="disLiked($event)"></app-liker>',
+    props: args,
+  }),
 };

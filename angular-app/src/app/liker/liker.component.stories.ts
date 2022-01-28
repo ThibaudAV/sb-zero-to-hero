@@ -1,12 +1,13 @@
 import { componentWrapperDecorator } from '@storybook/angular';
 import { Meta, Story } from '@storybook/angular/types-6-0';
+import { action } from '@storybook/addon-actions';
 import { LikerComponent } from './liker.component';
 
 export default {
   title: 'Liker',
   component: LikerComponent,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    liked: { action: 'liked' },
   },
   decorators: [
     componentWrapperDecorator(
@@ -15,9 +16,18 @@ export default {
   ],
 } as Meta;
 
-const Template: Story = (args) => ({
-  props: args,
-});
+const Template: Story = (args: any) => {
+  return {
+    template:
+      '<app-liker [likes]="likes" [dislikes]="dislikes" (liked)="liked($event)" (disLiked)="disLiked($event)"></app-liker>',
+    props: {
+      likes: args.likes,
+      dislikes: args.dislikes,
+      liked: args.liked,
+      disLiked: action('disLiked'),
+    },
+  };
+};
 
 export const Default = Template.bind({});
 

@@ -1,0 +1,22 @@
+import { Meta, Story } from "@storybook/addon-docs";
+
+<Meta title="Liker / README" />
+
+# Liker
+
+My awsome liker
+
+## Demo
+
+<Story id="liker--default"></Story>
+
+## Usage
+
+```html
+<app-liker
+  [likes]="likes"
+  [dislikes]="dislikes"
+  (liked)="liked($event)"
+  (disLiked)="disLiked($event)"
+></app-liker>
+```
