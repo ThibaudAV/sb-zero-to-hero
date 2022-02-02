@@ -1,15 +1,14 @@
 <script>
-    export let color = 'red';
+  export let color = "red";
 </script>
 
 <div style="border-color: {color}">
-    <slot/>
+  <slot />
 </div>
 
 <style>
-    div {
-        margin: 8px;
-        padding: 8px;
-        border: 1px solid red;
-    }
+  div {
+    border: 2px solid pink;
+    padding: 2rem;
+  }
 </style>

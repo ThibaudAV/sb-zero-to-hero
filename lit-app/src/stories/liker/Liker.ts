@@ -23,6 +23,7 @@ export class Liker extends LitElement {
   dislike() {
     this.dislikes++;
     this.requestUpdate();
+    this.dispatchEvent(new CustomEvent('my-liker:dislike'));
   }
 
   override render() {

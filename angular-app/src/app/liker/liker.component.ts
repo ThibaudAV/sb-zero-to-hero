@@ -13,6 +13,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class LikerComponent {
   @Input()
   likes = 0;
+
   @Input()
   dislikes = 0;
 
@@ -23,8 +24,6 @@ export class LikerComponent {
   disLiked = new EventEmitter();
 
   like() {
-    console.log(this.liked);
-
     this.likes++;
     this.liked.emit(this.likes);
   }

@@ -270,7 +270,7 @@
         },
         {
             "name": "LikerComponent",
-            "id": "component-LikerComponent-1fd64f483e6fe86347ba8398e66d5593e4103ff70954bfa696d60e4fa0145670874cebd988613c42baf01479f18300b3604a9cf7a79034750d6ed2715c71aef6",
+            "id": "component-LikerComponent-7c74e87be262f8d4910955be33d22ccc99ae34e420366417e9b236d696a99eab92ee5ac8a23310ca85506413204d3581bbba5bbcb2265c9c4ee42aa220fbec88",
             "file": "src/app/liker/liker.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -289,7 +289,7 @@
                     "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 18,
                     "type": "number",
                     "decorators": []
                 },
@@ -309,7 +309,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 24,
                     "type": "EventEmitter"
                 },
                 {
@@ -317,7 +317,7 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 21,
                     "type": "EventEmitter"
                 }
             ],
@@ -329,7 +329,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 31,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -339,7 +339,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -351,7 +351,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-liker',\n  template: `\n    <div>\n      <button id=\"like\" (click)=\"like()\">Like</button>\n      <button id=\"dislike\" (click)=\"dislike()\">Dislike</button>\n      <p>{{ likes }} Likes - {{ dislikes }} Dislikes</p>\n    </div>\n  `,\n})\nexport class LikerComponent {\n  @Input()\n  likes = 0;\n  @Input()\n  dislikes = 0;\n\n  @Output()\n  liked = new EventEmitter();\n\n  @Output()\n  disLiked = new EventEmitter();\n\n  like() {\n    console.log(this.liked);\n\n    this.likes++;\n    this.liked.emit(this.likes);\n  }\n\n  dislike() {\n    this.dislikes++;\n    this.disLiked.emit(this.dislikes);\n  }\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-liker',\n  template: `\n    <div>\n      <button id=\"like\" (click)=\"like()\">Like</button>\n      <button id=\"dislike\" (click)=\"dislike()\">Dislike</button>\n      <p>{{ likes }} Likes - {{ dislikes }} Dislikes</p>\n    </div>\n  `,\n})\nexport class LikerComponent {\n  @Input()\n  likes = 0;\n\n  @Input()\n  dislikes = 0;\n\n  @Output()\n  liked = new EventEmitter();\n\n  @Output()\n  disLiked = new EventEmitter();\n\n  like() {\n    this.likes++;\n    this.liked.emit(this.likes);\n  }\n\n  dislike() {\n    this.dislikes++;\n    this.disLiked.emit(this.dislikes);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": ""
@@ -695,7 +695,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\n  render: (args: any) => ({\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: {\n      likes: args.likes,\n      dislikes: args.dislikes,\n      liked: args.liked,\n      disLiked: args.disLiked,\n    },\n  }),\n}"
+                "defaultValue": "{\n  render: (args: any) => ({\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: args,\n  }),\n}"
             },
             {
                 "name": "Template",
@@ -705,7 +705,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "(args: any) => {\n  return {\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: {\n      likes: args.likes,\n      dislikes: args.dislikes,\n      liked: (v: number) => {\n        console.log('aaa');\n        return action('liked');\n      },\n      disLiked: action('disLiked'),\n    },\n  };\n}"
+                "defaultValue": "(args: any) => {\n  return {\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: {\n      likes: args.likes,\n      dislikes: args.dislikes,\n      liked: args.liked,\n      disLiked: action('disLiked'),\n    },\n  };\n}"
             }
         ],
         "functions": [],
@@ -752,7 +752,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\n  render: (args: any) => ({\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: {\n      likes: args.likes,\n      dislikes: args.dislikes,\n      liked: args.liked,\n      disLiked: args.disLiked,\n    },\n  }),\n}"
+                    "defaultValue": "{\n  render: (args: any) => ({\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: args,\n  }),\n}"
                 }
             ],
             "src/app/liker/liker.component.stories.ts": [
@@ -774,7 +774,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "(args: any) => {\n  return {\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: {\n      likes: args.likes,\n      dislikes: args.dislikes,\n      liked: (v: number) => {\n        console.log('aaa');\n        return action('liked');\n      },\n      disLiked: action('disLiked'),\n    },\n  };\n}"
+                    "defaultValue": "(args: any) => {\n  return {\n    template:\n      '<app-liker [likes]=\"likes\" [dislikes]=\"dislikes\" (liked)=\"liked($event)\" (disLiked)=\"disLiked($event)\"></app-liker>',\n    props: {\n      likes: args.likes,\n      dislikes: args.dislikes,\n      liked: args.liked,\n      disLiked: action('disLiked'),\n    },\n  };\n}"
                 }
             ],
             "src/environments/environment.prod.ts": [

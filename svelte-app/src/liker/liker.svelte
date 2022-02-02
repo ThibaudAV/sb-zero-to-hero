@@ -1,17 +1,23 @@
 <!-- liker buttons -->
 <script>
-  export let like = 0;
-  export let dislike = 0;
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  export let likes = 0;
+  export let dislikes = 0;
   function onLike() {
-    like++;
+    likes++;
+    dispatch("onLike", this.likes);
   }
   function onDislike() {
-    dislike++;
+    dislikes++;
+    dispatch("onDislike", this.dislikes);
   }
 </script>
 
 <div>
   <button on:click={onLike}>Like</button>
   <button on:click={onDislike}>Dislike</button>
-  <p>{like} Likes - {dislike} Dislikes</p>
+  <p>{likes} Likes - {dislikes} Dislikes</p>
 </div>

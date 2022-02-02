@@ -11,7 +11,8 @@ export default {
   },
   decorators: [
     componentWrapperDecorator(
-      (story) => `<div style="margin: 3em">${story}</div>`
+      (story) =>
+        `<div style="border: 2px solid pink; padding:2rem">${story}</div>`
     ),
   ],
   render: (args) => ({

@@ -1,5 +1,5 @@
 import {Story, Meta} from '@storybook/web-components';
-import {action} from '@storybook/addon-actions'
+import {action} from '@storybook/addon-actions';
 import {html} from 'lit';
 import './Liker';
 
@@ -8,18 +8,24 @@ export default {
   argTypes: {
     likes: {type: 'number'},
     dislikes: {type: 'number'},
-  }
+  },
 } as Meta;
 
-const Template: Story = ({likes, dislikes, onLike}) =>
-  html`<my-liker .likes=${likes} .dislikes=${dislikes} @my-liker:like=${onLike}></my-liker>`;
+const Template: Story = ({likes, dislikes, onLike, onDislike}) =>
+  html`<my-liker
+    .likes=${likes}
+    .dislikes=${dislikes}
+    @my-liker:like=${onLike}
+    @my-liker:dislike=${onDislike}
+  ></my-liker>`;
 
 export const Default = Template.bind({});
 Default.args = {
   likes: 12,
   dislikes: 14,
-  onLike: action('On like')
-}
+  onLike: action('On like'),
+  onDislike: action('On dislike'),
+};
 
 Default.play = (context) => {
   const button = context.canvasElement

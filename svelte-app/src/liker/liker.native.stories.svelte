@@ -4,18 +4,12 @@
   import BorderDecorator from "./BorderDecorator.svelte";
 </script>
 
-<Meta title="Liker" component={Liker} />
+<Meta title="Native/Liker" component={Liker} />
 
 <Template let:args>
   <BorderDecorator>
-    <Liker />
+    <Liker {...args} />
   </BorderDecorator>
 </Template>
 
-<Story
-  name="Default"
-  args={{
-    primary: true,
-    label: "Button",
-  }}
-/>
+<Story name="Default" />

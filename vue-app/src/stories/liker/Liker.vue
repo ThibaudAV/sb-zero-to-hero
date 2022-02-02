@@ -7,7 +7,7 @@
         👎 Dislike
       </button>
       <p>
-        {{likes}} Likes - {{dislikes}} Dislikes
+        {{likesNb}} Likes - {{dislikesNb}} Dislikes
       </p>
     </div>
 </template>
@@ -37,18 +37,16 @@ export default {
 
   data(props) {
     props = reactive(props);
-    return { ...props };
+    return { ...props, likesNb: props.likes, dislikesNb: props.dislikes };
   },
   
   methods: {
     onLike() {
-      // TODO
-      // this.likes++;
+      this.likesNb++;
       this.$emit('onLike', this.likes)
     },
     onDislike() {
-      // TODO
-      // this.dislikes++;
+      this.dislikesNb++;
       this.$emit('onDislikes', this.dislikes)
     },
   },
